@@ -44,4 +44,8 @@ into accessible tabs by adding ARIA attributes. Keyboard navigation is supported
  
 This jQuery plugin doesn't style (except ``aria-hidden="true"`` of course), styles can be added using other classes.
 
+A very crappy example can be found here: http://www.nicolas-hoffmann.net/bordel/tabs/
+
+It can be included for two tab system or more in a page.
+
 Enjoy.
