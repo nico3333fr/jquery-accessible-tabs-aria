@@ -1,7 +1,7 @@
-# jquery-accessible-tabs-aria
+# jQuery accessible tabs using ARIA
 ===========================
 
-This simple script transforms this code:
+This simple script transforms this simple list of anchors:
 
 ```
 <div class="tabs">
