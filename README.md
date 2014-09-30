@@ -46,6 +46,6 @@ This jQuery plugin doesn't style (except ``aria-hidden="true"`` of course), styl
 
 A very crappy example can be found here: http://www.nicolas-hoffmann.net/bordel/tabs/
 
-It can be included for two tab system or more in a page.
+It can be included for two tab systems or more in a page.
 
 Enjoy.
