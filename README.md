@@ -1,7 +1,7 @@
 # jQuery accessible tabs using ARIA
 ===========================
 
-This simple script transforms this simple list of anchors:
+This simple script transforms this simple list of anchors to contents:
 
 ```
 <div class="tabs">
@@ -34,11 +34,15 @@ This simple script transforms this simple list of anchors:
 </div>
 ```
 
-into accessible tabs by adding ARIA attributes. Keyboard navigation is supported:
+into shiny accessible tabs by adding ARIA attributes. Keyboard navigation is supported:
+__If you focus in the tabs "buttons"__
 - use up/left to see previous tab, 
 - down/right to see next tab
 - home to see first tab (wherever you are)
 - and end to see last tab (wherever you are)
+
+__If you focus in a tab content__
+- use Ctrl Up/left to Set focus on the tab button for the currently displayed tab
 
 ## Requirements
 
