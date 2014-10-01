@@ -153,6 +153,19 @@ $(document).ready(function(){
                 
                 }
  
+        } )
+        .on( "keydown", ".tabs__tabcontent", function( event ) {
+        
+                var $this = $(this),
+                       $tab_to_focus;
+                    
+                    if ( (event.keyCode == 37 || event.keyCode == 38) && event.ctrlKey ) {
+                             $tab_to_focus = $this.attr('aria-labelledby');
+                             $("#" + $tab_to_focus).focus();
+                             event.preventDefault();                             
+                             return false;
+                       }
+        
         } );
   
 });
