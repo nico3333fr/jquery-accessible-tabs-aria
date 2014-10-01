@@ -115,6 +115,16 @@ $(document).ready(function(){
                         }
                         event.preventDefault();
                 }
+                else if ( event.keyCode == 36 ) {
+                        // activate first tab
+                        $parent.find( ".tabs__item:first-child a" ).click().focus();
+                        event.preventDefault();
+                }
+                else if ( event.keyCode == 35 ) {
+                        // activate last tab
+                        $parent.find( ".tabs__item:last-child a" ).click().focus();
+                        event.preventDefault();
+                }
  
         } );
   
