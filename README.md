@@ -34,7 +34,11 @@ This simple script transforms this simple list of anchors:
 </div>
 ```
 
-into accessible tabs by adding ARIA attributes. Keyboard navigation is supported (use up/left to see previous tab, and down/right to see next tab).
+into accessible tabs by adding ARIA attributes. Keyboard navigation is supported:
+- use up/left to see previous tab, 
+- down/right to see next tab
+- home to see first tab (wherever you are)
+- and end to see last tab (wherever you are)
 
 ## Requirements
 
