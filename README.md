@@ -35,6 +35,7 @@ This simple script transforms this simple list of anchors to contents:
 ```
 
 into shiny accessible tabs by adding ARIA attributes. Keyboard navigation is supported:
+
 __If you focus in the tabs "buttons"__
 - use up/left to see previous tab, 
 - down/right to see next tab
