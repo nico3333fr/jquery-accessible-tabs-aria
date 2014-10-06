@@ -63,5 +63,6 @@ It can be included for two tab systems or more in a page.
 
 Enjoy.
 
-
 <img src="http://www.nicolas-hoffmann.net/bordel/chuck-norris1.jpg" alt="Chuck Norris approved this" />
+
+P.S: this plugin is in [MIT license](https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE).
