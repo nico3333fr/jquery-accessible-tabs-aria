@@ -44,6 +44,10 @@ __If you focus in the tabs "buttons"__
 
 __If you focus in a tab content__
 - use Ctrl Up/left to Set focus on the tab button for the currently displayed tab
+- use Ctrl PageUp to Set focus on the previous tab button for the currently displayed tab
+- use Ctrl PageDown to Set focus on the next tab button for the currently displayed tab
+ 
+__Warning__: Ctrl+PageUp/PageDown combination could activate for some browsers a switch of browser tabs. Nothing to do for this, as far as I know (if you have a solution, let me know).
 
 ## Requirements
 
@@ -58,3 +62,6 @@ A very crappy example can be found here: http://www.nicolas-hoffmann.net/bordel/
 It can be included for two tab systems or more in a page.
 
 Enjoy.
+
+
+<img src="http://www.nicolas-hoffmann.net/bordel/chuck-norris1.jpg" alt="Chuck Norris approved this" />
