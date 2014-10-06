@@ -157,13 +157,47 @@ $(document).ready(function(){
         .on( "keydown", ".tabs__tabcontent", function( event ) {
         
                 var $this = $(this),
-                       $tab_to_focus;
+                       $tab_to_focus,
+                       $parent;
                     
+                    // CTRL up/Left
                     if ( (event.keyCode == 37 || event.keyCode == 38) && event.ctrlKey ) {
                              $tab_to_focus = $this.attr('aria-labelledby');
                              $("#" + $tab_to_focus).focus();
                              event.preventDefault();                             
-                             return false;
+                       }
+                    // CTRL PageUp
+                    if ( event.keyCode == 33 && event.ctrlKey ) {
+                             $tab_focused = $this.attr('aria-labelledby');
+                             $("#" + $tab_focused).focus();
+                             
+                             $parent = $("#" + $tab_focused).parent();
+                             
+                             // if we are on first => activate last
+                             if ( $parent.is( ".tabs__item:first-child" ) ) {
+                                   $parent.parent().find( ".tabs__item:last-child a" ).click().focus();
+                             }
+                             // else activate prev
+                             else {
+                                   $parent.prev().children( ".tabs__link" ).click().focus();
+                             }
+                             event.preventDefault();
+                       }
+                    // CTRL PageDown
+                    if ( event.keyCode == 34 && event.ctrlKey ) {
+                             $tab_focused = $this.attr('aria-labelledby');
+                             $("#" + $tab_focused).focus();
+                             
+                             $parent = $("#" + $tab_focused).parent();
+                             // if we are on last => activate first
+                             if ( $parent.is( ".tabs__item:last-child" ) ) {
+                                   $parent.parent().find( ".tabs__item:first-child a" ).click().focus();
+                             }
+                             // else activate next
+                             else {
+                                   $parent.next().children( ".tabs__link" ).click().focus();
+                             }
+                             event.preventDefault();
                        }
         
         } );
@@ -214,7 +248,7 @@ display: none;
 1 coucou <a href="#">plop</a>
 </div>
 <div id="ingredients" class="tabs__tabcontent">
-2 toto
+2 toto  <a href="#">plop</a>
 </div>
 <div id="preparation" class="tabs__tabcontent">
 3 tutu
