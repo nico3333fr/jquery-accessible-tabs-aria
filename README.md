@@ -53,7 +53,7 @@ __Warning__: Ctrl+PageUp/PageDown combination could activate for some browsers a
 
 - jQuery (others smaller libraries should be ok, but didn't test for the moment)
 - a small piece of CSS `` [aria-hidden=true] { display: none; } ``
-- respect the classes given above, and the convention a href="#**id_fourth**" id="label&#95;&#95;**id_fourth**" (will improve later)
+- respect the classes given above, and the convention a href="#**id_fourth**" id="label&#95;**id_fourth**" (will improve later)
  
 This jQuery plugin __doesn't style tabs__ (except ``aria-hidden="true"`` of course), styles can be added using other classes.
 
