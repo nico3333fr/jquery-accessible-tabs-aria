@@ -34,7 +34,9 @@ This simple script transforms this simple list of anchors to contents:
 </div>
 ```
 
-into shiny accessible tabs by adding ARIA attributes. Keyboard navigation is supported:
+into shiny accessible tabs by adding ARIA attributes. 
+
+Keyboard navigation is supported, based on ARIA DP (http://www.w3.org/TR/2013/WD-wai-aria-practices-20130307/#tabpanel && http://www.oaa-accessibility.org/examplep/tabpanel1/):
 
 __If you focus in the tabs "buttons"__
 - use Up/Left to see previous tab, 
