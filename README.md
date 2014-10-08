@@ -37,10 +37,10 @@ This simple script transforms this simple list of anchors to contents:
 into shiny accessible tabs by adding ARIA attributes. Keyboard navigation is supported:
 
 __If you focus in the tabs "buttons"__
-- use up/left to see previous tab, 
-- down/right to see next tab
-- Ctrl home to see first tab (wherever you are)
-- and Ctrl end to see last tab (wherever you are)
+- use Up/Left to see previous tab, 
+- use Down/Right to see next tab
+- Use "Home" to see first tab (wherever you are in tab buttons)
+- Use "End" to see last tab (wherever you are in tab buttons)
 
 __If you focus in a tab content__
 - use Ctrl Up/left to Set focus on the tab button for the currently displayed tab
