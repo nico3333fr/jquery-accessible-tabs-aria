@@ -54,10 +54,10 @@ __Warning__: Ctrl+PageUp/PageDown combination could activate for some browsers a
 ## Requirements
 
 - jQuery (others smaller libraries should be ok, but didn't test for the moment)
-- a small piece of CSS `` [aria-hidden=true] { display: none; } ``
+- a small piece of CSS `` .tabs__tabcontent[aria-hidden=true] { display: none; } ``
 - respect the classes given above, and the convention a href="#**id_fourth**" id="label&#95;**id_fourth**" (will improve later)
  
-This jQuery plugin __doesn't style tabs__ (except ``aria-hidden="true"`` of course), styles can be added using other classes.
+This jQuery plugin __doesn't style tabs__ (except ``.tabs__tabcontent[aria-hidden=true]`` of course), styles can be added using other classes.
 
 A very crappy example can be found here: http://www.nicolas-hoffmann.net/bordel/tabs/
 
@@ -67,4 +67,4 @@ Enjoy.
 
 <img src="http://www.nicolas-hoffmann.net/bordel/chuck-norris1.jpg" alt="Chuck Norris approved this" />
 
-P.S: this plugin is in [MIT license](https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE).
+P.S: this plugin is in [MIT license](https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE). It couldn't be done without the precious help of @ScreenFeedFr , @goetsu and @romaingervois.
