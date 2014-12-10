@@ -51,6 +51,10 @@ __If you focus in a tab content__
  
 __Warning__: Ctrl+PageUp/PageDown combination could activate for some browsers a switch of browser tabs. Nothing to do for this, as far as I know (if you have a solution, let me know).
 
+## Features
+
+If there is a fragment in URL, the script detects if it is **on** or **in** a tab content, and select the tab automatically.
+
 ## Requirements
 
 - jQuery (others smaller libraries should be ok, but didn't test for the moment)
@@ -58,8 +62,6 @@ __Warning__: Ctrl+PageUp/PageDown combination could activate for some browsers a
 - respect the classes given above, and the convention a href="#**id_fourth**" id="label&#95;**id_fourth**" (will improve later)
  
 This jQuery plugin __doesn't style tabs__ (except ``.tabs__tabcontent[aria-hidden=true]`` of course), styles can be added using other classes.
-
-Enhancement just added: if there is a fragment in URL, the script detects if it is **on** or **in** a tab, and select the tab automatically.
 
 A very crappy example can be found here: http://www.nicolas-hoffmann.net/bordel/tabs/
 
