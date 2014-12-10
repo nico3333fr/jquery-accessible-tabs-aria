@@ -22,8 +22,8 @@ $(document).ready(function(){
  
         /* Tabs ------------------------------------------------------------------------------------------------------------ */
         $( ".tabs__list" ).attr( "role", "tablist" )                            // ul
-        .children( ".tabs__item" ).attr( "role", "presentation" )       // li
-        .find( ".tabs__link").attr( "role", "tab" )                                     // a
+        .children( ".tabs__item" ).attr( "role", "presentation" )               // li
+        .find( ".tabs__link").attr( "role", "tab" )                             // a
         .each( function () {
                 // controls/tabindex attributes
                 var $this = $( this ),
@@ -45,14 +45,14 @@ $(document).ready(function(){
         /* Tabs content ---------------------------------------------------------------------------------------------------- */
         $( ".tabs__tabcontent" ).attr({
                 "role": "tabpanel",             // contents
-                "aria-hidden": "true"   // all hidden
+                "aria-hidden": "true"           // all hidden
         })
         .each( function() {
                 // label by link
                 var $this = $( this );
                 $this.attr( "aria-labelledby", "label_" + $this.attr( "id" ) );
         } );
- 
+        
         // search if hash is ON tabs
         if ( hash !== "" ) {
                 // display
@@ -80,6 +80,7 @@ $(document).ready(function(){
                     
                 });
         }
+        
  
         // if no selected => select first
         $( ".tabs" ).each( function(index) {
@@ -123,7 +124,6 @@ $(document).ready(function(){
                         $activated,
                         $focus_on_tab_only = false;
                 
-                // some event should be activated only if the focus is on tabs (not on tabpanel)
                 if ( $( document.activeElement ).is( $parent.find('.tabs__link') ) ){
                    $focus_on_tab_only = true;
                    }
@@ -131,7 +131,7 @@ $(document).ready(function(){
                 // catch keyboard event only if focus is on tab
                 if ($focus_on_tab_only) {
                     // strike up or left in the tab
-                    if ( event.keyCode == 37 || event.keyCode == 38 ) {
+                    if ( (event.keyCode == 37 || event.keyCode == 38) && !event.ctrlKey ) {
                             // find previous tab
                             $activated = $parent.find( '.tabs__link[aria-selected="true"]' ).parent();
                             // if we are on first => activate last
@@ -145,7 +145,7 @@ $(document).ready(function(){
                             event.preventDefault();
                     }
                     // strike down or right in the tab
-                    else if ( event.keyCode == 40 || event.keyCode == 39 ) {
+                    else if ( (event.keyCode == 40 || event.keyCode == 39) && !event.ctrlKey ) {
                             // find next tab
                             $activated = $parent.find( '.tabs__link[aria-selected="true"]' ).parent();
                             // if we are on last => activate first
@@ -219,6 +219,7 @@ $(document).ready(function(){
                        }
         
         } );
+ 
   
 });
 
