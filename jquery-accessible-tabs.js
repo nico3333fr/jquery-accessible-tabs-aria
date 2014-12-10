@@ -36,6 +36,7 @@ $(document).ready(function(){
                 $this.attr( "aria-labelledby", "label_" + $this.attr( "id" ) );
         } );
  
+        // search if hash is ON tabs
         if ( hash !== "" ) {
                 // display
                 $( "#" + hash + ".tabs__tabcontent" ).removeAttr( "aria-hidden" );
@@ -43,6 +44,23 @@ $(document).ready(function(){
                 $( "#label_" + hash + ".tabs__link" ).attr({
                         "aria-selected": "true",
                         "tabindex": 0
+                });
+        }
+        // search if hash is IN tabs
+        if ( hash !== "" && $( "#" + hash + ".tabs__tabcontent" ).length === 0 ) {
+                $( ".tabs__tabcontent" ).each( function() {
+                        var $this = $(this),
+                                $tab_id = $this.attr("id");
+                        if ( $this.find( "#" + hash ).length ) {
+                                // display
+                                $this.removeAttr( "aria-hidden" );
+                                // selection menu
+                                $( "#label_" + $tab_id + ".tabs__link" ).attr({
+                                        "aria-selected": "true",
+                                        "tabindex": 0
+                                });
+                        }
+                    
                 });
         }
  
