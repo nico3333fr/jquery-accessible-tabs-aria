@@ -59,6 +59,8 @@ __Warning__: Ctrl+PageUp/PageDown combination could activate for some browsers a
  
 This jQuery plugin __doesn't style tabs__ (except ``.tabs__tabcontent[aria-hidden=true]`` of course), styles can be added using other classes.
 
+Enhancement just added: if there is a fragment in URL, the script detects if it is **on** or **in** a tab, and select the tab automatically.
+
 A very crappy example can be found here: http://www.nicolas-hoffmann.net/bordel/tabs/
 
 It can be included for two tab systems or more in a page.
