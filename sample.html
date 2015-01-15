@@ -45,7 +45,8 @@ $(document).ready(function(){
         /* Tabs content ---------------------------------------------------------------------------------------------------- */
         $( ".tabs__tabcontent" ).attr({
                 "role": "tabpanel",             // contents
-                "aria-hidden": "true"           // all hidden
+                "aria-hidden": "true",          // all hidden
+                "tabindex": 0
         })
         .each( function() {
                 // label by link
