@@ -63,7 +63,7 @@ If there is a fragment in URL, the script detects if it is **on** or **in** a ta
  
 This jQuery plugin __doesn't style tabs__ (except ``.tabs__tabcontent[aria-hidden=true]`` of course), styles can be added using other classes.
 
-A very crappy example can be found here: http://www.nicolas-hoffmann.net/bordel/tabs/
+A demo page is here: http://a11y.nicolas-hoffmann.net/tabs/ 
 
 It can be included for two tab systems or more in a page.
 
