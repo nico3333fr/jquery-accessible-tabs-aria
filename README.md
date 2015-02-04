@@ -60,12 +60,14 @@ If there is a fragment in URL, the script detects if it is **on** or **in** a ta
 - jQuery (others smaller libraries should be ok, but didn't test for the moment)
 - a small piece of CSS `` .tabs__tabcontent[aria-hidden=true] { display: none; } ``
 - respect the classes given above, and the convention a href="#**id_fourth**" id="label&#95;**id_fourth**" (will improve later)
+- Use attribute data-hx="hx" (ex data-hx="h2" if your tab system is after a h1) to specify Hx structure in your tabs if they don't have one in tab content (will be added, and can be hidden throught a class invisible) OR
+- Indicate the hx structure contained in your tab contents, using the attribute data-existing-hx="h2"
  
 This jQuery plugin __doesn't style tabs__ (except ``.tabs__tabcontent[aria-hidden=true]`` of course), styles can be added using other classes.
 
 A demo page is here: http://a11y.nicolas-hoffmann.net/tabs/ 
 
-It can be included for two tab systems or more in a page.
+It can be included for one, two tab systems or more in a page.
 
 Enjoy.
 
