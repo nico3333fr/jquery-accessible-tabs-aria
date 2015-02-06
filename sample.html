@@ -42,7 +42,8 @@ $(document).ready(function(){
                         controls = controls.replace( "#", "" );
                         $this.attr({
                                 "aria-controls": controls,
-                                "tabindex": -1
+                                "tabindex": -1,
+                                "aria-selected": "false"
                         });
                 }             
                 
@@ -96,7 +97,7 @@ $(document).ready(function(){
         // if no selected => select first
         $( ".tabs" ).each( function(index) {
                 var $this = $(this);
-                if ( $this.find( ".tabs__link[aria-selected]" ).length === 0 ) {
+                if ( $this.find( '.tabs__link[aria-selected="true"]' ).length === 0 ) {
                         $this.find( ".tabs__link:first" ).attr({
                                 "aria-selected": "true",
                                 "tabindex": 0
@@ -112,11 +113,14 @@ $(document).ready(function(){
                         $parent = $this.parents( ".tabs" ),
                         hx = $parent.attr( "data-hx" );
  
-                // remove aria selected on all link
-                $parent.find( ".tabs__link" ).removeAttr( "aria-selected" ).attr( "tabindex", -1 );
+                // aria selected false on all links
+                $parent.find( ".tabs__link" ).attr({ 
+                          "tabindex": -1,
+                          "aria-selected": "false"
+                          });
  
                 // add aria selected on $this
-                $this.attr({
+                $this.attr({    
                         "aria-selected": "true",
                         "tabindex": 0
                 });
@@ -125,7 +129,6 @@ $(document).ready(function(){
                 $parent.find( ".tabs__tabcontent" ).attr( "aria-hidden", "true" );
  
                 // remove aria-hidden on tab linked
-                // add focus to hx in this tabs
                 $( "#" + $this.attr( "aria-controls" ) ).removeAttr( "aria-hidden" );
 
  
@@ -144,7 +147,7 @@ $(document).ready(function(){
                    }
                  
                 // catch keyboard event only if focus is on tab
-                if ($focus_on_tab_only) {
+                if ($focus_on_tab_only && !event.ctrlKey) {
                     // strike up or left in the tab
                     if ( event.keyCode == 37 || event.keyCode == 38 ) {
                             // find previous tab
