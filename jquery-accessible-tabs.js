@@ -4,32 +4,44 @@ $(document).ready(function(){
         var hash = window.location.hash.replace( "#", "" );
  
         /* Tabs ------------------------------------------------------------------------------------------------------------ */
-        $( ".tabs__list" ).attr( "role", "tablist" )                    // ul
+        $( ".tabs__list" ).attr( "role", "tablist" )                    // ul        
         .children( ".tabs__item" ).attr( "role", "presentation" )       // li
         .find( ".tabs__link").attr( "role", "tab" )                     // a
         .each( function () {
                 // controls/tabindex attributes
                 var $this = $( this ),
-                        controls = $this.attr( "href" );
- 
+                        controls = $this.attr( "href" ),
+                        hx = $this.parents(".tabs__list").attr( "data-hx" ),
+                        existing_hx = $this.parents(".tabs__list").attr( "data-existing-hx" ),
+                        text = $this.html();
+                        
+                if ( typeof hx !== "undefined" && hx !== "undefined" && hx !== "" ) {
+                        $(controls).prepend('<' + hx + ' class="invisible" tabindex="0">' + text + '</' + hx + '>');
+                }
+                if ( typeof existing_hx !== "undefined" && existing_hx !== "undefined" && existing_hx !== "" ) {
+                        $(controls).find(existing_hx + ':first-child').attr('tabindex',0);
+                }
                 if ( typeof controls !== "undefined" && controls !== "" && controls !== "#" ) {
                         controls = controls.replace( "#", "" );
                         $this.attr({
                                 "aria-controls": controls,
-                                "tabindex": -1
+                                "tabindex": -1,
+                                "aria-selected": "false"
                         });
-                }
+                }             
+                
                 else {
                         // PEBCAK
                         $this.remove();
                 }
+                $this.removeAttr("href");
         } );
  
         /* Tabs content ---------------------------------------------------------------------------------------------------- */
         $( ".tabs__tabcontent" ).attr({
                 "role": "tabpanel",             // contents
-                "aria-hidden": "true",          // all hidden
-                "tabindex": 0
+                "aria-hidden": "true"           // all hidden
+                //"tabindex": 0
         })
         .each( function() {
                 // label by link
@@ -68,7 +80,7 @@ $(document).ready(function(){
         // if no selected => select first
         $( ".tabs" ).each( function(index) {
                 var $this = $(this);
-                if ( $this.find( ".tabs__link[aria-selected]" ).length === 0 ) {
+                if ( $this.find( '.tabs__link[aria-selected="true"]' ).length === 0 ) {
                         $this.find( ".tabs__link:first" ).attr({
                                 "aria-selected": "true",
                                 "tabindex": 0
@@ -81,13 +93,17 @@ $(document).ready(function(){
         /* click on a tab link */
         $( "body" ).on( "click", ".tabs__link", function( event ) {
                 var $this = $( this ),
-                        $parent = $this.parents( ".tabs" );
+                        $parent = $this.parents( ".tabs" ),
+                        hx = $parent.attr( "data-hx" );
  
-                // remove aria selected on all link
-                $parent.find( ".tabs__link" ).removeAttr( "aria-selected" ).attr( "tabindex", -1 );
+                // aria selected false on all links
+                $parent.find( ".tabs__link" ).attr({ 
+                          "tabindex": -1,
+                          "aria-selected": "false"
+                          });
  
                 // add aria selected on $this
-                $this.attr({
+                $this.attr({    
                         "aria-selected": "true",
                         "tabindex": 0
                 });
@@ -97,6 +113,7 @@ $(document).ready(function(){
  
                 // remove aria-hidden on tab linked
                 $( "#" + $this.attr( "aria-controls" ) ).removeAttr( "aria-hidden" );
+
  
                 event.preventDefault();
         } )
@@ -113,7 +130,7 @@ $(document).ready(function(){
                    }
                  
                 // catch keyboard event only if focus is on tab
-                if ($focus_on_tab_only) {
+                if ($focus_on_tab_only && !event.ctrlKey) {
                     // strike up or left in the tab
                     if ( event.keyCode == 37 || event.keyCode == 38 ) {
                             // find previous tab
