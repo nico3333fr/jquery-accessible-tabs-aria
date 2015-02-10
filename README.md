@@ -1,6 +1,8 @@
 # jQuery accessible tabs using ARIA
 ===========================
 
+A presentation and demo page is here: http://a11y.nicolas-hoffmann.net/tabs/ 
+
 This simple script transforms this simple list of anchors to contents:
 
 ```
