@@ -6,31 +6,31 @@ A presentation and demo page is here: http://a11y.nicolas-hoffmann.net/tabs/
 This simple script transforms this simple list of anchors to contents:
 
 ```
-<div class="tabs">
-  <ul class="tabs__list">
-   <li class="tabs__item">
-    <a href="#id_first" id="label_id_first" class="tabs__link">1st tab</a>
+<div class="js-tabs">
+  <ul class="js-tablist">
+   <li class="js-tablist__item">
+    <a href="#id_first" id="label_id_first" class="js-tablist__link">1st tab</a>
    </li>
-   <li class="tabs__item">
-    <a href="#id_second" id="label_id_second" class="tabs__link">2nd tab</a>
+   <li class="js-tablist__item">
+    <a href="#id_second" id="label_id_second" class="js-tablist__link">2nd tab</a>
    </li>
-   <li class="tabs__item">
-    <a href="#id_third" id="label_id_third" class="tabs__link">3rd tab</a>
+   <li class="js-tablist__item">
+    <a href="#id_third" id="label_id_third" class="js-tablist__link">3rd tab</a>
    </li>
-   <li class="tabs__item">
-    <a href="#id_fourth" id="label_id_fourth" class="tabs__link">4th tab</a>
+   <li class="js-tablist__item">
+    <a href="#id_fourth" id="label_id_fourth" class="js-tablist__link">4th tab</a>
    </li>
   </ul>
- <div id="id_first" class="tabs__tabcontent">
+ <div id="id_first" class="js-tabcontent">
    here the content of 1st tab
  </div>
- <div id="id_second" class="tabs__tabcontent">
+ <div id="id_second" class="js-tabcontent">
    here the content of 2nd tab
  </div>
- <div id="id_third" class="tabs__tabcontent">
+ <div id="id_third" class="js-tabcontent">
    here the content of 3rd tab
  </div>
- <div id="id_fourth" class="tabs__tabcontent">
+ <div id="id_fourth" class="js-tabcontent">
    here the content of 4th tab
  </div>
 </div>
@@ -60,14 +60,14 @@ If there is a fragment in URL, the script detects if it is **on** or **in** a ta
 ## Requirements
 
 - jQuery (others smaller libraries should be ok, but didn't test for the moment)
-- a small piece of CSS `` .tabs__tabcontent[aria-hidden=true] { display: none; } ``
+- a small piece of CSS `` .js-tabcontent[aria-hidden=true] { display: none; } ``
 - respect the classes given above, and the convention a href="#**id_fourth**" id="label&#95;**id_fourth**" (will improve later)
 - Use attribute data-hx="hx" (ex data-hx="h2" if your tab system is after a h1) to specify Hx structure in your tabs if they don't have one in tab content (will be added, and can be hidden throught a class invisible) OR
 - Indicate the hx structure contained in your tab contents, using the attribute data-existing-hx="h2"
  
-This jQuery plugin __doesn't style tabs__ (except ``.tabs__tabcontent[aria-hidden=true]`` of course), styles can be added using other classes.
+This jQuery plugin __doesn't style tabs__ (except ``.js-tabcontent[aria-hidden=true]`` of course), styles can be added using other classes.
 
-A demo page is here: http://a11y.nicolas-hoffmann.net/tabs/ 
+A demo page is here with full docs and examples: http://a11y.nicolas-hoffmann.net/tabs/ 
 
 It can be included for one, two tab systems or more in a page.
 
