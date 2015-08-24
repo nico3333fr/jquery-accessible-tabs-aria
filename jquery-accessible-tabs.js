@@ -9,11 +9,11 @@ $(document).ready(function(){
         var hash = window.location.hash.replace( "#", "" );
  
         /* Tabs ------------------------------------------------------------------------------------------------------------ */
-        $tabs = $( ".js-tabs" );
+        var $tabs = $( ".js-tabs" );
 
         if ( $tabs.length ) {
 
-            $tab_list = $( ".js-tablist" );
+            var $tab_list = $( ".js-tablist" );
             $tab_list.each( function () {
                 var $this_tab_list = $( this ),
                     options = $this_tab_list.data(),
