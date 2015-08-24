@@ -13,7 +13,7 @@ $(document).ready(function(){
 
         if ( $tabs.length ) {
 
-            var $tab_list = $( ".js-tablist" );
+            var $tab_list = $tabs.find(".js-tablist");
             $tab_list.each( function () {
                 var $this_tab_list = $( this ),
                     options = $this_tab_list.data(),
