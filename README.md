@@ -57,6 +57,10 @@ __Warning__: Ctrl+PageUp/PageDown combination could activate for some browsers a
 
 If there is a fragment in URL, the script detects if it is **on** or **in** a tab content, and select the tab automatically.
 
+You can make a link to a tab (which opens it). ```<a href="#link-to-tab-content" class="js-link-to-tab">link to tab</a>```
+
+Fragment is added to URL if you select a tab.
+
 ## Requirements
 
 - jQuery (others smaller libraries should be ok, but didn't test for the moment)
