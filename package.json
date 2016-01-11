@@ -1,12 +1,14 @@
 {
-  "name": "jQuery accessible tabs using ARIA",
-  "description": "A simple jQuery code to provide accessible tabs starting from a simple source",
+  "title": "jQuery accessible tabs using ARIA",
+  "name": "jquery-accessible-tabpanel-aria",
+  "description": "A simple jQuery code to provide accessible tabs (tab panels) starting from a simple source, using ARIA",
   "version": "1.0.2",
   "keywords": [
     "Accessibility",
     "ARIA",
     "Tabs",
-    "a1y"
+    "Tab panel",
+    "a11y"
   ],
   "author": [
     {
@@ -15,6 +17,9 @@
       "web": "http://www.nicolas-hoffmann.net/"
     }
   ],
+  "dependencies": {
+    "jquery": ">=1.0.0"
+  },
   "bugs": {
     "web": "https://github.com/nico3333fr/jquery-accessible-tabs-aria/issues"
   },
