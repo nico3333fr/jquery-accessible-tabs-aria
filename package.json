@@ -1,0 +1,34 @@
+{
+  "name": "jQuery accessible tabs using ARIA",
+  "description": "A simple jQuery code to provide accessible tabs starting from a simple source",
+  "version": "1.0.2",
+  "keywords": [
+    "Accessibility",
+    "ARIA",
+    "Tabs",
+    "a1y"
+  ],
+  "author": [
+    {
+      "name": "Nicolas Hoffmann",
+      "email": "dante3333@gmail.com",
+      "web": "http://www.nicolas-hoffmann.net/"
+    }
+  ],
+  "bugs": {
+    "web": "https://github.com/nico3333fr/jquery-accessible-tabs-aria/issues"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/nico3333fr/jquery-accessible-tabs-aria.git"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "MIT",
+      "url": "https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE"
+    }
+  ],
+  "homepage": "http://a11y.nicolas-hoffmann.net/tabs/"
+}
