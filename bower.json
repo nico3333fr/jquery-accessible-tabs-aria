@@ -1,0 +1,40 @@
+{
+  "name": "jquery-accessible-tabpanel-aria",
+  "description": "A simple jQuery code to provide accessible tabs (tab panels) starting from a simple source, using ARIA",
+  "homepage": "http://a11y.nicolas-hoffmann.net/tabs/",
+  "main": "jquery-accessible-tabs.js",
+  "version": "1.0.3",
+  "keywords": [
+    "Accessibility",
+    "ARIA",
+    "tabs",
+	  "tab panel",
+	  "accessible",
+    "a11y",
+	  "jQueryPlugin"
+  ],
+  "authors": [
+    {
+      "name": "Nicolas Hoffmann",
+      "email": "dante3333@gmail.com",
+      "web": "http://www.nicolas-hoffmann.net/"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.0.0"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git://github.com/nico3333fr/jquery-accessible-tabs-aria.git"
+    }
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "jquery-accessible-tabs_old_version.js",
+    "README.md"
+  ]
+}
