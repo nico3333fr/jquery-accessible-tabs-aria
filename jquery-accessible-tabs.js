@@ -36,12 +36,13 @@ $(document).ready(function(){
                 // controls/tabindex attributes
                 $this_tab_list_links.each( function () {
                     var $this = $( this ),
+                        $hx_generated_class = typeof options.tabsGeneratedHxClass !== 'undefined' ? options.tabsGeneratedHxClass : 'invisible',
                         $href = $this.attr( "href" ),
                         $controls = $( $href ),
-                        $text = $this.html();
+                        $text = $this.text();
                             
                     if ( $hx !== "" ) {
-                       $controls.prepend('<' + $hx + ' class="invisible" tabindex="0">' + $text + '</' + $hx + '>');
+                       $controls.prepend('<' + $hx + ' class="' + $hx_generated_class + '" tabindex="0">' + $text + '</' + $hx + '>');
                     }
                     if ( $existing_hx !== "" ) {
                        $controls.find($existing_hx + ':first-child').attr('tabindex',0);
