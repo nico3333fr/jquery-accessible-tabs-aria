@@ -69,7 +69,7 @@ $(document).ready(function(){
             .each( function() {
                     var $this = $( this ),
                         $this_id = $this.attr( "id" ),
-                        $prefix_attribute = $("#label_" + $this_id ).parents('.js-tablist').attr( 'data-tabs-prefix-class' ),
+                        $prefix_attribute = $("#label_" + $this_id ).closest('.js-tablist').attr( 'data-tabs-prefix-class' ),
                         $tabs_prefix_classes = typeof $prefix_attribute !== 'undefined' ? $prefix_attribute + '-' : '';
                     // label by link
                     $this.attr( "aria-labelledby", "label_" + $this_id );
@@ -123,7 +123,7 @@ $(document).ready(function(){
                     var $this = $( this ),
                         $hash_to_update = $this.attr( "aria-controls" ),
                         $tab_content_linked = $( "#" + $this.attr( "aria-controls" ) ),
-                        $parent = $this.parents( ".js-tabs" ),
+                        $parent = $this.closest( ".js-tabs" ),
                         $all_tab_links = $parent.find( ".js-tablist__link" ),
                         $all_tab_contents = $parent.find( ".js-tabcontent" );
      
@@ -153,7 +153,7 @@ $(document).ready(function(){
             /* Key down in tabs */
             .on( "keydown", ".js-tablist", function( event ) {
 
-                    var $parent = $(this).parents( '.js-tabs' ),
+                    var $parent = $(this).closest( '.js-tabs' ),
                         $activated = $parent.find( '.js-tablist__link[aria-selected="true"]' ).parent(),
                         $last_link = $parent.find( ".js-tablist__item:last-child .js-tablist__link" ),
                         $first_link = $parent.find( ".js-tablist__item:first-child .js-tablist__link" ),
