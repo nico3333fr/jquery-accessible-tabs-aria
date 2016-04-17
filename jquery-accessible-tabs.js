@@ -88,7 +88,7 @@ $(document).ready(function(){
                     });
             }
             // search if hash is IN tabs
-            if ( hash !== "" && $( "#" + hash + ".js-tabcontent" ).length === 0 && $( "#" + hash ).parents( '.js-tabcontent' ).length ){
+            if ( hash !== "" && $( "#" + hash ).parents( '.js-tabcontent' ).length ){
                 var $this_hash = $( "#" + hash ),
                     $tab_content_parent = $this_hash.parents( '.js-tabcontent' ),
                     $tab_content_parent_id = $tab_content_parent.attr( 'id' );
