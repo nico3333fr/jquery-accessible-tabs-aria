@@ -119,7 +119,7 @@ $(document).ready(function(){
      
             /* Events ---------------------------------------------------------------------------------------------------------- */
             /* click on a tab link */
-            $( "body" ).on( "click", ".js-tablist__link", function( event ) {
+            $( "body" ).on( "click", ".js-tablist__link:not([aria-disabled='true']", function( event ) {
                     var $this = $( this ),
                         $hash_to_update = $this.attr( "aria-controls" ),
                         $tab_content_linked = $( "#" + $this.attr( "aria-controls" ) ),
