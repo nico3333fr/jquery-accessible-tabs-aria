@@ -77,36 +77,41 @@ $(document).ready(function(){
                     $this.addClass ( $tabs_prefix_classes + 'tabs__content');
             });
      
-            // search if hash is ON tabs
+            // search if hash is ON not disabled tab
             if ( hash !== "" && $( "#" + hash + ".js-tabcontent" ).length !== 0 ) {
-                    // display
-                    $( "#" + hash + ".js-tabcontent" ).removeAttr( "aria-hidden" );
-                    // selection menu
-                    $( "#label_" + hash + ".js-tablist__link" ).attr({
-                            "aria-selected": "true",
-                            "tabindex": 0
-                    });
+                    if ( $( "#label_" + hash + ".js-tablist__link:not([aria-disabled='true'])" ).length ){
+                       // display not disabled
+                       $( "#" + hash + ".js-tabcontent" ).removeAttr( "aria-hidden" );
+                       // selection menu
+                       $( "#label_" + hash + ".js-tablist__link" ).attr({
+                              "aria-selected": "true",
+                              "tabindex": 0
+                       });
+                    }
+
             }
-            // search if hash is IN tabs
+            // search if hash is IN not disabled tab
             if ( hash !== "" && $( "#" + hash ).parents( '.js-tabcontent' ).length ){
                 var $this_hash = $( "#" + hash ),
                     $tab_content_parent = $this_hash.parents( '.js-tabcontent' ),
                     $tab_content_parent_id = $tab_content_parent.attr( 'id' );
                     
-                    $tab_content_parent.removeAttr( "aria-hidden" );
-                    // selection menu
-                    $( "#label_" + $tab_content_parent_id + ".js-tablist__link" ).attr({
-                            "aria-selected": "true",
-                            "tabindex": 0
-                    });
+                    if ( $( "#label_" + $tab_content_parent_id + ".js-tablist__link:not([aria-disabled='true'])" ).length ){
+                        $tab_content_parent.removeAttr( "aria-hidden" );
+                        // selection menu
+                        $( "#label_" + $tab_content_parent_id + ".js-tablist__link" ).attr({
+                                "aria-selected": "true",
+                                "tabindex": 0
+                        });
+                    }
             }
      
-            // if no selected => select first
+            // if no selected => select first not disabled
             $tabs.each( function() {
                     var $this = $( this ),
                         $tab_selected = $this.find( '.js-tablist__link[aria-selected="true"]' ),
-                        $first_link = $this.find( ".js-tablist__link:first" ),
-                        $first_content = $this.find( ".js-tabcontent:first" );
+                        $first_link = $this.find( '.js-tablist__link:not([aria-disabled="true"]):first' ),
+                        $first_content = $( '#' + $first_link.attr( 'aria-controls' ) );
                     
                     if ( $tab_selected.length === 0 ) {
                        $first_link.attr({
@@ -119,7 +124,10 @@ $(document).ready(function(){
      
             /* Events ---------------------------------------------------------------------------------------------------------- */
             /* click on a tab link */
-            $( "body" ).on( "click", ".js-tablist__link:not([aria-disabled='true']", function( event ) {
+            $( "body" ).on( "click", ".js-tablist__link[aria-disabled='true']", function( event ) {
+                return false;
+            } );
+            $( "body" ).on( "click", ".js-tablist__link:not([aria-disabled='true'])", function( event ) {
                     var $this = $( this ),
                         $hash_to_update = $this.attr( "aria-controls" ),
                         $tab_content_linked = $( "#" + $this.attr( "aria-controls" ) ),
@@ -155,9 +163,37 @@ $(document).ready(function(){
 
                     var $parent = $(this).closest( '.js-tabs' ),
                         $activated = $parent.find( '.js-tablist__link[aria-selected="true"]' ).parent(),
-                        $last_link = $parent.find( ".js-tablist__item:last-child .js-tablist__link" ),
-                        $first_link = $parent.find( ".js-tablist__item:first-child .js-tablist__link" ),
-                        $focus_on_tab_only = false;
+                        $last_link = $parent.find( '.js-tablist__item:last-child .js-tablist__link' ),
+                        $first_link = $parent.find( '.js-tablist__item:first-child .js-tablist__link' ),
+                        $focus_on_tab_only = false,
+                        $prev = $activated,
+                        $next = $activated;
+                    
+                    // search valid previous 
+                    do {    
+                        // if we are on first => activate last
+                        if ( $prev.is( ".js-tablist__item:first-child" ) ) {
+                             $prev = $last_link.parent();
+                             }
+                             // else previous
+                             else {
+                                   $prev = $prev.prev();
+                                   }
+                    }
+                    while ( $prev.children('.js-tablist__link').attr('aria-disabled') === 'true' && $prev !== $activated );
+                    
+                    // search valid next
+                    do {    
+                        // if we are on last => activate first
+                        if ( $next.is( ".js-tablist__item:last-child" ) ) {
+                             $next = $first_link.parent();
+                             }
+                             // else previous
+                             else {
+                                   $next = $next.next();
+                                   }
+                    }
+                    while ( $next.children('.js-tablist__link').attr('aria-disabled') === 'true' && $next !== $activated );
                     
                     // some event should be activated only if the focus is on tabs (not on tabpanel)
                     if ( $( document.activeElement ).is( $parent.find('.js-tablist__link') ) ){
@@ -168,26 +204,16 @@ $(document).ready(function(){
                     if ($focus_on_tab_only && !event.ctrlKey) {
                         // strike up or left in the tab
                         if ( event.keyCode == 37 || event.keyCode == 38 ) {
-                                // if we are on first => activate last
-                                if ( $activated.is( ".js-tablist__item:first-child" ) ) {
-                                    $last_link.click().focus();
-                                }
-                                // else activate previous
-                                else {
-                                     $activated.prev().children( ".js-tablist__link" ).click().focus();
-                                }
+                                
+                                $prev.children( ".js-tablist__link" ).click().focus();
+
                                 event.preventDefault();
                         }
                         // strike down or right in the tab
                         else if ( event.keyCode == 40 || event.keyCode == 39 ) {
-                                // if we are on last => activate first
-                                if ( $activated.is( ".js-tablist__item:last-child" ) ) {
-                                    $first_link.click().focus();
-                                }
-                                // else activate next
-                                else {
-                                      $activated.next().children( ".js-tablist__link" ).click().focus();
-                                     }
+                                
+                                $next.children( ".js-tablist__link" ).click().focus();
+                                
                                 event.preventDefault();
                         }
                         else if ( event.keyCode == 36 ) {
@@ -210,7 +236,11 @@ $(document).ready(function(){
                         $selector_tab_to_focus = $this.attr('aria-labelledby'),
                         $tab_to_focus = $("#" + $selector_tab_to_focus),
                         $parent_item = $tab_to_focus.parent(),
-                        $parent_list = $parent_item.parent();
+                        $parent_list = $parent_item.parent(),
+                        $first_item = $parent_list.find( '.js-tablist__item:first-child' ),
+                        $last_item = $parent_list.find( '.js-tablist__item:last-child' ),
+                        $prev_item = $parent_item,
+                        $next_item = $parent_item;
                         
                     // CTRL up/Left
                     if ( (event.keyCode == 37 || event.keyCode == 38) && event.ctrlKey ) {
@@ -219,30 +249,44 @@ $(document).ready(function(){
                     }
                     // CTRL PageUp
                     if ( event.keyCode == 33 && event.ctrlKey ) {
-                        $tab_to_focus.focus();
-
-                        // if we are on first => activate last
-                        if ( $parent_item.is( ".js-tablist__item:first-child" ) ) {
-                           $parent_list.find( ".js-tablist__item:last-child .js-tablist__link" ).click().focus();
+                        //$tab_to_focus.focus();
+                        
+                        // search valid previous 
+                        do { 
+                            // if we are on first => last
+                            if ( $prev_item.is( ".js-tablist__item:first-child" ) ) {
+                                 $prev_item = $last_item;
+                                 }
+                                 // else previous
+                                 else {
+                                       $prev_item = $prev_item.prev();
+                                       }
                         }
-                        // else activate prev
-                        else {
-                             $parent_item.prev().children( ".js-tablist__link" ).click().focus();
-                             }
+                        while ( $prev_item.children('.js-tablist__link').attr('aria-disabled') === 'true' && $prev_item !== $parent_item );
+
+                        $prev_item.children( ".js-tablist__link" ).click().focus();
+
                         event.preventDefault();
                     }
                     // CTRL PageDown
                     if ( event.keyCode == 34 && event.ctrlKey ) {
                         $tab_to_focus.focus();
                                  
-                        // if we are on last => activate first
-                        if ( $parent_item.is( ".js-tablist__item:last-child" ) ) {
-                           $parent_list.find( ".js-tablist__item:first-child .js-tablist__link" ).click().focus();
+                        // search valid next 
+                        do { 
+                            // if we are on last => first
+                            if ( $next_item.is( ".js-tablist__item:last-child" ) ) {
+                                 $next_item = $first_item;
+                                 }
+                                 // else previous
+                                 else {
+                                       $next_item = $next_item.next();
+                                       }
                         }
-                        // else activate next
-                        else {
-                             $parent_item.next().children( ".js-tablist__link" ).click().focus();
-                             }
+                        while ( $next_item.children('.js-tablist__link').attr('aria-disabled') === 'true' && $next_item !== $parent_item );
+                        
+                        $next_item.children( ".js-tablist__link" ).click().focus();
+                        
                         event.preventDefault();
                     }
             
@@ -253,10 +297,13 @@ $(document).ready(function(){
                          $tab_to_go = $($this.attr('href')),
                          $button_to_click = $( '#' + $tab_to_go.attr('aria-labelledby') );
 
-                    // activate tabs
-                    $button_to_click.click();
-                    // give focus to the good button
-                    setTimeout(function(){ $button_to_click.focus() }, 10);
+                    if ( $button_to_click.attr('aria-disabled') !== 'true' ) {
+                        // activate tabs
+                        $button_to_click.click();
+                        // give focus to the good button
+                        setTimeout(function(){ $button_to_click.focus() }, 10);                    
+                    }
+
             } );
             
         }
