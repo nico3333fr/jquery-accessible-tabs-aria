@@ -1,4 +1,4 @@
-$(document).ready(function(){
+jQuery(document).ready(function($){
 
         /*
          * jQuery Accessible tab panel system, using ARIA
