@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
 
         /*
-         * jQuery Accessible tab panel system, using ARIA
-         * @version v1.4.0
+         * jQuery Accessible tab panel system, using ARIA - for nested tabs
+         * @version v1.4.0         
          * Website: http://a11y.nicolas-hoffmann.net/tabs/
          * License MIT: https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE
          */
@@ -133,8 +133,8 @@ jQuery(document).ready(function($){
                         $hash_to_update = $this.attr( "aria-controls" ),
                         $tab_content_linked = $( "#" + $this.attr( "aria-controls" ) ),
                         $parent = $this.closest( ".js-tabs" ),
-                        $all_tab_links = $parent.find( ".js-tablist__link" ),
-                        $all_tab_contents = $parent.find( ".js-tabcontent" );
+                        $all_tab_links = $parent.find( "> .js-tablist > .js-tablist__item > .js-tablist__link" ),
+                        $all_tab_contents = $parent.find( "> .js-tabcontent" );
      
                     // aria selected false on all links
                     $all_tab_links.attr({ 
@@ -163,9 +163,9 @@ jQuery(document).ready(function($){
             .on( "keydown", ".js-tablist", function( event ) {
 
                     var $parent = $(this).closest( '.js-tabs' ),
-                        $activated = $parent.find( '.js-tablist__link[aria-selected="true"]' ).parent(),
-                        $last_link = $parent.find( '.js-tablist__item:last-child .js-tablist__link' ),
-                        $first_link = $parent.find( '.js-tablist__item:first-child .js-tablist__link' ),
+                        $activated = $parent.find( '> .js-tablist > .js-tablist__item > .js-tablist__link[aria-selected="true"]' ).parent(),
+                        $last_link = $parent.find( '> .js-tablist > .js-tablist__item:last-child > .js-tablist__link' ),
+                        $first_link = $parent.find( '> .js-tablist > .js-tablist__item:first-child > .js-tablist__link' ),
                         $focus_on_tab_only = false,
                         $prev = $activated,
                         $next = $activated;

@@ -53,6 +53,11 @@ __If you focus in a tab content__
  
 __Warning__: Ctrl+PageUp/PageDown combination could activate for some browsers a switch of browser tabs. Nothing to do for this, as far as I know (if you have a solution, let me know).
 
+## Normal or nested tabs?
+
+If you need to have nested tabs, you should use ```jquery-accessible-nested-tabs.js``` which has stricter selectors. 
+See this issue that explains why https://github.com/nico3333fr/jquery-accessible-tabs-aria/issues/17
+
 ## Features
 
 If there is a fragment in URL, the script detects if it is **on** or **in** a tab content, and select the tab automatically.
