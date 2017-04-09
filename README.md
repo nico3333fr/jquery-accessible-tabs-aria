@@ -1,5 +1,4 @@
 # jQuery accessible tabs using ARIA
-===========================
 
 A presentation and demo page is here: https://a11y.nicolas-hoffmann.net/tabs/ 
 
