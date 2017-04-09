@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
     /*
      * jQuery Accessible tab panel system, using ARIA
      * @version v1.4.1
-     * Website: http://a11y.nicolas-hoffmann.net/tabs/
+     * Website: https://a11y.nicolas-hoffmann.net/tabs/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE
      */
     // Store current URL hash.
