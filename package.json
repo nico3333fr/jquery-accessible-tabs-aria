@@ -2,7 +2,7 @@
   "title": "jQuery accessible tabs using ARIA",
   "name": "jquery-accessible-tabpanel-aria",
   "description": "A simple jQuery code to provide accessible tabs (tab panels) starting from a simple source, using ARIA",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "keywords": [
     "Accessibility",
     "ARIA",
