@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery Accessible tab panel system, using ARIA - for nested tabs
-     * @version v1.5.1        
+     * @version v1.5.3        
      * Website: https://a11y.nicolas-hoffmann.net/tabs/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE
      */
