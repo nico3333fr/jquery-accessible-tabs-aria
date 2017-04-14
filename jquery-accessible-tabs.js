@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery Accessible tab panel system, using ARIA
-     * @version v1.5.1
+     * @version v1.5.3
      * Website: https://a11y.nicolas-hoffmann.net/tabs/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE
      */
@@ -107,6 +107,22 @@ jQuery(document).ready(function($) {
                 });
             }
         }
+        
+        // search if data-selected="1" is on a not disabled tab for each tab system
+        $tabs.each(function() {
+            var $this = $(this),
+                $tab_selected = $this.find('.js-tablist__link[aria-selected="true"]'),
+                $tab_data_selected = $this.find('.js-tablist__link[data-selected="1"]:not([aria-disabled="true"]):first'),
+                $tab_data_selected_content = $('#' + $tab_data_selected.attr('aria-controls'));
+
+            if ($tab_selected.length === 0 && $tab_data_selected.length !== 0) {
+                $tab_data_selected.attr({
+                    "aria-selected": "true",
+                    "tabindex": 0
+                });
+                $tab_data_selected_content.removeAttr("aria-hidden");
+            }
+        });
 
         // if no selected => select first not disabled
         $tabs.each(function() {
