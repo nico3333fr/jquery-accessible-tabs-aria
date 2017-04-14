@@ -65,6 +65,17 @@ You can make a link to a tab (which opens it). ```<a href="#link-to-tab-content"
 
 Fragment is added to URL if you select a tab.
 
+You can also use disabled tab (see https://a11y.nicolas-hoffmann.net/tabs/#disabled_work for a demo)
+
+If you need a tab to be opened by default, it is possible, using ```data-selected="1"``` on the ```js-tablist__link``` you need to open.
+
+Other tabs are still available, here are the rules for this feature:
+
+- The fragment detection has always priority on this feature;
+- If there are several ```data-selected="1"``` put on tabs (which does not make sense and should never happen), the first one will be used;
+- If the ```data-selected="1"``` attribute is set on a disabled tab, of course it won’t be selected.
+
+
 ## Requirements
 
 - jQuery (others smaller libraries should be ok, but didn't test for the moment)
