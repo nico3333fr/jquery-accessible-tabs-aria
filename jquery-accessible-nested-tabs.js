@@ -2,15 +2,16 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery Accessible tab panel system, using ARIA - for nested tabs
-     * @version v1.4.1         
-     * Website: http://a11y.nicolas-hoffmann.net/tabs/
+     * @version v1.5.0         
+     * Website: https://a11y.nicolas-hoffmann.net/tabs/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE
      */
     // Store current URL hash.
     var hash = window.location.hash.replace("#", "");
 
     /* Tabs ------------------------------------------------------------------------------------------------------------ */
-    var $tabs = $(".js-tabs");
+    var $tabs = $(".js-tabs"),
+        $body = $("body");
 
     if ($tabs.length) {
 
@@ -107,6 +108,22 @@ jQuery(document).ready(function($) {
             }
         }
 
+        // search if data-selected="1" is on a not disabled tab for each tab system
+        $tabs.each(function() {
+            var $this = $(this),
+                $tab_selected = $this.find('.js-tablist__link[aria-selected="true"]'),
+                $tab_data_selected = $this.find('.js-tablist__link[data-selected="1"]:not([aria-disabled="true"]):first'),
+                $tab_data_selected_content = $('#' + $tab_data_selected.attr('aria-controls'));
+
+            if ($tab_selected.length === 0 && $tab_data_selected.length !== 0) {
+                $tab_data_selected.attr({
+                    "aria-selected": "true",
+                    "tabindex": 0
+                });
+                $tab_data_selected_content.removeAttr("aria-hidden");
+            }
+        });
+
         // if no selected => select first not disabled
         $tabs.each(function() {
             var $this = $(this),
@@ -125,10 +142,10 @@ jQuery(document).ready(function($) {
 
         /* Events ---------------------------------------------------------------------------------------------------------- */
         /* click on a tab link */
-        $("body").on("click", ".js-tablist__link[aria-disabled='true']", function() {
+        $body.on("click", ".js-tablist__link[aria-disabled='true']", function() {
             return false;
         });
-        $("body").on("click", ".js-tablist__link:not([aria-disabled='true'])", function(event) {
+        $body.on("click", ".js-tablist__link:not([aria-disabled='true'])", function(event) {
                 var $this = $(this),
                     $hash_to_update = $this.attr("aria-controls"),
                     $tab_content_linked = $("#" + $this.attr("aria-controls")),

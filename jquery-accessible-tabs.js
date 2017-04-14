@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery Accessible tab panel system, using ARIA
-     * @version v1.4.1
+     * @version v1.5.0
      * Website: https://a11y.nicolas-hoffmann.net/tabs/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE
      */
@@ -10,7 +10,8 @@ jQuery(document).ready(function($) {
     var hash = window.location.hash.replace("#", "");
 
     /* Tabs ------------------------------------------------------------------------------------------------------------ */
-    var $tabs = $(".js-tabs");
+    var $tabs = $(".js-tabs"),
+        $body = $("body");
 
     if ($tabs.length) {
 
@@ -125,10 +126,10 @@ jQuery(document).ready(function($) {
 
         /* Events ---------------------------------------------------------------------------------------------------------- */
         /* click on a tab link */
-        $("body").on("click", ".js-tablist__link[aria-disabled='true']", function() {
+        $body.on("click", ".js-tablist__link[aria-disabled='true']", function() {
             return false;
         });
-        $("body").on("click", ".js-tablist__link:not([aria-disabled='true'])", function(event) {
+        $body.on("click", ".js-tablist__link:not([aria-disabled='true'])", function(event) {
                 var $this = $(this),
                     $hash_to_update = $this.attr("aria-controls"),
                     $tab_content_linked = $("#" + $this.attr("aria-controls")),
