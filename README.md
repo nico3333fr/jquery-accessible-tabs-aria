@@ -73,7 +73,7 @@ Other tabs are still available, here are the rules for this feature:
 
 - The fragment detection has always priority on this feature;
 - If there are several ```data-selected="1"``` put on tabs (which does not make sense and should never happen), the first one will be used;
-- If the ```data-selected="1"``` attribute is set on a disabled tab, of course it won’t be selected.
+- If the ```data-selected="1"``` attribute is set on a disabled tab, of course it won't be selected.
 
 
 ## Requirements
