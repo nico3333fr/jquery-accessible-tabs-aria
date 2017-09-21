@@ -63,7 +63,7 @@ If there is a fragment in URL, the script detects if it is **on** or **in** a ta
 
 You can make a link to a tab (which opens it). ```<a href="#link-to-tab-content" class="js-link-to-tab">link to tab</a>```
 
-Fragment is added to URL if you select a tab.
+Fragment is added to URL if you select a tab (and can be removed using ```data-tabs-disable-fragment="1"``` on ```div class="js-tabs"```).
 
 You can also use disabled tab (see https://a11y.nicolas-hoffmann.net/tabs/#disabled_work for a demo)
 
