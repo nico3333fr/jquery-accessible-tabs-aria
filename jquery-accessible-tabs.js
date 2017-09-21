@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery Accessible tab panel system, using ARIA
-     * @version v1.5.3
+     * @version v1.6.0
      * Website: https://a11y.nicolas-hoffmann.net/tabs/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE
      */
@@ -107,7 +107,7 @@ jQuery(document).ready(function($) {
                 });
             }
         }
-        
+
         // search if data-selected="1" is on a not disabled tab for each tab system
         $tabs.each(function() {
             var $this = $(this),
@@ -150,6 +150,8 @@ jQuery(document).ready(function($) {
                     $hash_to_update = $this.attr("aria-controls"),
                     $tab_content_linked = $("#" + $this.attr("aria-controls")),
                     $parent = $this.closest(".js-tabs"),
+                    options = $parent.data(),
+                    tabs_disable_fragments = typeof options.tabsDisableFragment !== 'undefined' ? true : false,
                     $all_tab_links = $parent.find(".js-tablist__link"),
                     $all_tab_contents = $parent.find(".js-tabcontent");
 
@@ -172,9 +174,11 @@ jQuery(document).ready(function($) {
                 $tab_content_linked.removeAttr("aria-hidden");
 
                 // add fragment (timeout for transitions)
-                setTimeout(function() {
-                    history.pushState(null, null, location.pathname + location.search + '#' + $hash_to_update)
-                }, 1000);
+                if (tabs_disable_fragments === false) {
+                    setTimeout(function() {
+                        history.pushState(null, null, location.pathname + location.search + '#' + $hash_to_update)
+                    }, 1000);
+                }
 
                 event.preventDefault();
             })
