@@ -1,35 +1,67 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
  <title>Example tabs</title>
 <meta charset="utf-8" />
 <meta name="author" content="Nicolas Hoffmann" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <meta name="viewport" content="width=device-width" />
-<link rel="stylesheet" href="http://rocssti.net/downloads/rocssti-fr.css" />
+<link rel="stylesheet" href="https://rocssti.net/downloads/rocssti-fr.css" />
 
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
-<script src="http://a11y.nicolas-hoffmann.net/tabs/js/jquery-accessible-tabs.js"></script>
+<script src="https://a11y.nicolas-hoffmann.net/tabs/js/jquery-accessible-tabs.js"></script>
 
 <style>
 
 
-.tabs__tabcontent[aria-hidden=true] {
+/* --------------- styles for tabs -----------------------*/
+
+.invisible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+
+
+.example-tabs-tabs__list {
+  margin: 0;
+  padding: 0;
+}
+.example-tabs-tabs__item {
+  display: inline-block;
+}
+
+.example-tabs-tabs__link {
+  display: inline-block;
+  padding: 1em  2em;
+  background: #f2f2f2;
+  cursor: pointer;
+  color: #148297;
+}
+
+[aria-selected="true"].example-tabs-tabs__link {
+  color: #000;
+}
+
+.example-tabs-tabs__content {
+  background: #f2f2f2;
+  padding: 1em;
+}
+
+[aria-hidden="true"].example-tabs-tabs__content {
   display: none;
-}
-
-.tabs__link {
-
-  text-decoration: none;
-}
-
-.tabs__link:focus, .tabs__link:hover, .tabs__link:active, .tabs__link[aria-selected="true"] {
-  color: #f00;
 }
 
 #page {
   width: 960px;
+  margin: 0 auto;
 }
 
 </style>
@@ -38,58 +70,42 @@
 <div id="page">
  <h1>Tabs example</h1>
 
-<div class="tabs">
-  <ul class="tabs__list row w100" data-hx="h2">
-   <li class="tabs__item col 25">
-    <a href="#id_first" id="label_id_first" class="tabs__link">1st tab</a>
+<div class="js-tabs">
+  <ul class="js-tablist" data-hx="h2" data-tabs-prefix-class="example-tabs">
+   <li class="js-tablist__item">
+    <a href="#id_first" id="label_id_first" class="js-tablist__link">1st tab</a>
    </li>
-   <li class="tabs__item col 25">
-    <a href="#id_second" id="label_id_second" class="tabs__link">2nd tab</a>
-   </li>
-   <li class="tabs__item col 25">
-    <a href="#id_third" id="label_id_third" class="tabs__link">3rd tab</a>
-   </li>
-   <li class="tabs__item col 25">
-    <a href="#id_fourth" id="label_id_fourth" class="tabs__link">4th tab</a>
+   <li class="js-tablist__item">
+    <a href="#id_second" id="label_id_second" class="js-tablist__link">2nd tab</a>
    </li>
   </ul>
- <div id="id_first" class="tabs__tabcontent">
+ <div id="id_first" class="js-tabcontent">
    here the content of 1st tab
  </div>
- <div id="id_second" class="tabs__tabcontent">
+ <div id="id_second" class="js-tabcontent">
    here the content of 2nd tab
- </div>
- <div id="id_third" class="tabs__tabcontent">
-   here the content of 3rd tab, with a select with an id="id_in_tab"
-   <select name="fdsfdsf" id="id_in_tab">
-    <option value=""></option>
-    <option value="12">1241</option>
-   </select>
- </div>
- <div id="id_fourth" class="tabs__tabcontent">
-   here the content of 4th tab
  </div>
 </div>
 
 <br><br>
 
-<div class="tabs">
-<ul class="tabs__list row w100" data-existing-hx="h2">
- <li class="tabs__item col w50">
-  <a href="#suite" id="label_suite" class="tabs__link">Other </a>
- </li>
- <li class="tabs__item col w50">
-  <a href="#autresuite" id="label_autresuite" class="tabs__link">Other other</a>
- </li>
-</ul>
-<div id="suite" class="tabs__tabcontent">
-<h2>plop</h2>
-other
-</div>
-<div id="autresuite" class="tabs__tabcontent">
-<h2>toto</h2>
-other other
-</div>
+<div class="js-tabs" >
+  <ul class="js-tablist" data-existing-hx="h2" data-tabs-prefix-class="example-tabs">
+   <li class="js-tablist__item">
+    <a href="#id_other" id="label_id_other" class="js-tablist__link">1st tab</a>
+   </li>
+   <li class="js-tablist__item">
+    <a href="#id_another" id="label_id_another" class="js-tablist__link">2nd tab</a>
+   </li>
+  </ul>
+ <div id="id_other" class="js-tabcontent">
+   <h2>title</h2>
+   here the content of 1st tab
+ </div>
+ <div id="id_another" class="js-tabcontent">
+   <h2>other title</h2>
+   here the content of 2nd tab
+ </div>
 </div>
 <br><br><br>
 
